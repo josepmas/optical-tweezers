@@ -38,7 +38,7 @@ int Nlang=3;
     String[] labelTemperature = {"Temperature (T)","",""};
     String[] labelRefractiveIndexSphere = {"Refractive index (n2)","",""};
     String[] labelRadius = {"Sphere radius (a)","",""}; //&#57936;
-    String [] labelNumericalAperture={"Numerical aperture (NA):","",""};
+    String [] labelNumericalAperture={"Numerical aperture (NA)","",""};
     //Missatges:
     String[] lostparticle={"The bead has escaped!", "La boleta ha escapat!","La bola ha escapado!"};
     //String[] tabAdvPar={"Advanced Controls","Controls Avançats","Controles Avanzados"};
