@@ -146,6 +146,15 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
         jComboBox1.setSelectedIndex(0);
         par.initialized = true;
         overfillingOK();
+        if(par.forcedtrace){
+            jCheckBoxMenuItem2.setSelected(true);//Trace activat per defecte
+            jCheckBoxMenuItem2.setEnabled(false);
+        }
+        if (par.allow_ray_brightness_mode){
+
+        }else{
+            jMenu1.remove(jMenu_Ray_Brightness);
+        }
 //        Tracer.write_action_ini("Applet started");
 //            Tracer.write_all_param(par);
 //        Tracer.write_action_end();
@@ -936,7 +945,7 @@ public void calibrateOFF(){
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu_Ray_Brightness = new javax.swing.JMenu();
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -2587,7 +2596,7 @@ public void calibrateOFF(){
         });
         jMenu1.add(jCheckBoxMenuItem1);
 
-        jMenu3.setText("Ray brightness");
+        jMenu_Ray_Brightness.setText("Ray brightness");
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("Proportional to power");
@@ -2596,7 +2605,7 @@ public void calibrateOFF(){
                 jRadioButtonMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu3.add(jRadioButtonMenuItem1);
+        jMenu_Ray_Brightness.add(jRadioButtonMenuItem1);
 
         jRadioButtonMenuItem2.setText("Proprotional to relative force contribution");
         jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -2604,9 +2613,9 @@ public void calibrateOFF(){
                 jRadioButtonMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jRadioButtonMenuItem2);
+        jMenu_Ray_Brightness.add(jRadioButtonMenuItem2);
 
-        jMenu1.add(jMenu3);
+        jMenu1.add(jMenu_Ray_Brightness);
 
         jMenuBar3.add(jMenu1);
 
@@ -3395,7 +3404,7 @@ public void calibrateOFF(){
                     // Xavi - Start the trace only once the user has clicked on the appropiate menu item to record
                     // Josep - Si es fa clic al botó cancel a la finestra d'input, que no traci
                  if (par.traceractivated) {
-                        Tracer.set_user();
+                        Tracer.set_user(par);
                         if (Tracer.user_id==null){
                             par.traceractivated=false;
                             jCheckBoxMenuItem2.setSelected(false);
@@ -3647,7 +3656,6 @@ public void calibrateOFF(){
     private javax.swing.JLabel jLabelzc2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem10;
@@ -3656,6 +3664,7 @@ public void calibrateOFF(){
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu jMenu_Ray_Brightness;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel12;

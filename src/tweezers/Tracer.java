@@ -15,7 +15,6 @@ public class Tracer{
     static SimpleDateFormat sdf_filename = new SimpleDateFormat("yyyy_MM_dd-HH_mm_ss");
     static Date now_ini = new Date();
     static String time_ini =sdf_filename.format(now_ini.getTime());//df.format(System.currentTimeMillis());
-    static boolean traceON=true;
     static int comptador = 1;
     static String user_id;
     static String session_id;
@@ -23,8 +22,8 @@ public class Tracer{
     static FileWriter escriptor;
     static String filename2;
     // Define part for Hand made xml file from ascii output file
-    
-    public static void set_user() {
+
+    public static void set_user(Parametres par) {
 /**        do {
             user_id=JOptionPane.showInputDialog("Introdueix el teu nom","");
         } while (user_id==null || user_id.equals("") || 
@@ -32,8 +31,12 @@ public class Tracer{
         session_id=time_ini;
 **/
 
-        //Josep - si Ok amb text="" o Cancel, deixar user_ID=null (i que no traci).
-        user_id=JOptionPane.showInputDialog("Student ID:","");
+        if (par.forcedtrace){
+            user_id=Long.toString((long)System.currentTimeMillis())+"_"+Math.round(Math.random()*1.E5)+".xml";;;
+            //s'ha canviat el user ID per un nom fixat per fer proves amb alumnes sense el POP-UP inicial
+        }else{
+          user_id=JOptionPane.showInputDialog("Student ID:","");
+        }
         if (user_id==null || user_id.equals("")|| user_id.equals("null")){
             user_id=null;
         }else{
@@ -52,7 +55,7 @@ public class Tracer{
     public static void start_trace() {
 
         //set_user();
-        filename2 = "logs/trace-"+user_id+"_exercise_"+ exercise_id +".xml";
+        filename2 = "trace-"+user_id+"_exercise_"+ exercise_id +".xml";
         try {
             escriptor = new FileWriter(filename2,true);
 //            escriptor.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");

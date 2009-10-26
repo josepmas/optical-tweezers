@@ -12,8 +12,12 @@ public class Parametres {
     boolean correction3D=false;
     int raymode=0;
     boolean traceractivated; // És irrellevant posar aquí "=true" or "false". El valor per defecte es defineix a les propietats del menu item via netbeans
+    boolean forcedtrace=false; // When true, an anonimous trace file is automatically generated since the program is started
+                               // When false, the trace may be optionally activated by selecting a CheckBox in the File menu, and entering a studentID
+                               //This variable swithces between the classroom version (true) and the standard version (false)
+    boolean allow_ray_brightness_mode=false;
+    
     //All parameters are set in SI units
-
     double scaleP = 0.001;//Power in mW
     double Pmin=0.;//000000000001;
     double Pmax=100;//mW from the laser

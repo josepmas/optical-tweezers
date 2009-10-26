@@ -1026,7 +1026,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxMenuItem1ActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="jMenu3">
+            <Menu class="javax.swing.JMenu" name="jMenu_Ray_Brightness">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ray brightness"/>
               </Properties>
