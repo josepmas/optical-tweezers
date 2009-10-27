@@ -72,13 +72,13 @@ public class Parametres {
     //double Rpemin=0.001;//NAmin*fmin;
     //double Rpemax=0.1;//NAmax*fmax;
         
-    double scaleR=Math.pow(10, -6);    //escala de R en el panell d'entrada de dades
-    double[] Rmax ={10.E-6, 0.100E-6}; //els limits es podrien recalcular en funcio de lambda.
-    double[] Rmin = {1.E-6, 0.020E-6};
-    double[] Rdefault = {5.E-6,0.1E-6};//{(Rmax[0]+Rmin[0])/2., (Rmax[1]+Rmin[1])/2.};
+    double[] scaleR={Math.pow(10, -6),Math.pow(10,-9)};    //escala de R en el panell d'entrada de dades
+    double[] Rmax ={10.E-6, 100.E-9}; //els limits es podrien recalcular en funcio de lambda.
+    double[] Rmin = {1.E-6, 20.E-9};
+    double[] Rdefault = {5.E-6,50.E-9};//{(Rmax[0]+Rmin[0])/2., (Rmax[1]+Rmin[1])/2.};
     double R = Rdefault[0]; //Radi en micròmetres (rang entre 0.08 i 100 micrometres)
-    double[] incrR={0.1E-6,0.01E-6};
-    int[] nticsR = {(int)((Rmax[0]-Rmin[0])/incrR[0]),(int) ((Rmax[0]-Rmin[0])/incrR[0])};
+    double[] incrR={0.1E-6,1E-9};
+    int[] nticsR = {(int)((Rmax[0]-Rmin[0])/incrR[0]),(int) ((Rmax[1]-Rmin[1])/incrR[1])};
     
     double scalevisc=1E-3;
     double visc=8.90*Math.pow(10,-4); //viscositat de l'aigua en Pa�s

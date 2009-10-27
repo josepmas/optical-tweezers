@@ -253,7 +253,7 @@ public class graf2d {
 
             //PUNT D'INTERSECCIÓ AMB LA BOLA:
             //System.out.println("p0"+p0[k][1]+","+p0[k][2]+" v0="+v0[k][1]+","+v0[k][2]+" pc="+pc[1]+","+pc[2]);
-                p1[k]=op.intersec(p0[k], v0[k], pc,par.R/par.scaleR);
+                p1[k]=op.intersec(p0[k], v0[k], pc,par.R/par.scaleR[par.regim]);
                 feix[k]=op.raig(feix[k],p0[k],p1[k]);
                 talla[k]=op.booleantalla(p0[k],v0[k],pc,par)    ;
 

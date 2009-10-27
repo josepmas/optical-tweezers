@@ -2830,6 +2830,11 @@ public void calibrateOFF(){
 
         private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
             // TODO add your handling code here:
+            if(par.regim==0){
+                jLabel12.setText("\u03BC"+"m");
+            }else{
+                jLabel12.setText("nm");
+            }
             if(par.regim==0){//pedas perque faci bé el canvi de tamany en canviar el regim
                 par.R=2.E-6;//
                 setDefaultSettings();
@@ -2966,8 +2971,8 @@ public void calibrateOFF(){
         private void jSlider5StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider5StateChanged
             // TODO add your handling code here:
                 //System.out.println("R inicial="+par.R);
-                double size = ((double) jSlider5.getValue() * (par.Rmax[par.regim] - par.Rmin[par.regim]) / (double)jSlider5.getMaximum() + par.Rmin[par.regim]);
-                par.R = size;// * par.scaleR;
+                double size = ((double) jSlider5.getValue() * (par.Rmax[par.regim] - par.Rmin[par.regim]) / (double)par.nticsR[par.regim] + par.Rmin[par.regim]);
+                //par.R = size;// * par.scaleR;
 
          if (par.initialized && par.traceractivated) {
             Tracer.write_action_ini("R changed");
@@ -2976,7 +2981,12 @@ public void calibrateOFF(){
          }
             par.changed=true;
                 //System.out.println("R_Slider="+par.R);
-                jText8.setText(df.format(par.R/par.scaleR));
+            if(par.regim==0){
+                jText8.setText(df1.format(par.R/par.scaleR[par.regim]));
+            }else{
+                jText8.setText(intf.format(par.R/par.scaleR[par.regim]));
+            }
+            par.R=size;
                 par.calcParDependents();
                 //objectesYZ.actualitzarectanglecamp(par);
                 mostrarectanglecamp();
@@ -3212,7 +3222,7 @@ public void calibrateOFF(){
 
         private void jText8jFormattedTextField30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jText8jFormattedTextField30ActionPerformed
             // TODO add your handling code here:
-            double R = op.string2double(jText8.getText())*par.scaleR;
+            double R = op.string2double(jText8.getText())*par.scaleR[par.regim];
             par.R=op.coherce(R,par.Rmin[par.regim],par.Rmax[par.regim]);
             //System.out.println("R_text="+par.R);
             setDefaultSettings();
