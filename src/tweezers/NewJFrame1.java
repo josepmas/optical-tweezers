@@ -747,7 +747,7 @@ public void dtOK() {
         }
 }
 public void zoomOK(){
-        par.fieldforces[par.regim]=2.*panellYZ.getXMax()*par.scale*par.zoom;
+        par.fieldforces[par.regim]=2.*panellYZ.getXMax()*par.scale/par.zoom;
         //System.out.println(par.fieldforces[par.regim]);
 
         //objectesYZ.actualitzarectanglecamp(par);
@@ -3365,7 +3365,7 @@ public void calibrateOFF(){
         private void jSliderfieldStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderfieldStateChanged
             // TODO add your handling code here:
             par.zoom = (double)jSliderfield.getValue()*par.incrzoom[par.regim]+par.zoomin[par.regim];
-            jLabelfield.setText(df.format(par.zoom)+"x");//(df.format(par.fieldforces[par.regim]/par.scale)+"\u03BC"+"m");
+            jLabelfield.setText(df.format(par.zoom)+"X");//(df.format(par.fieldforces[par.regim]/par.scale)+"\u03BC"+"m");
 
         }//GEN-LAST:event_jSliderfieldStateChanged
 

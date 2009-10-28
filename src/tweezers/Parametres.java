@@ -114,12 +114,12 @@ public class Parametres {
     double incrwaist2pupil=0.01;
     int nticswaist2pupil = (int)((waist2pupilmax-waist2pupilmin)/incrwaist2pupil)+1;
     
-    double[] zoomdefault = {0.6,0.4};
+    double[] zoomdefault = {1.5,2.5};
     double zoom =zoomdefault[regim];
-    double[] zoomin={0.05,0.05};
-    double[] zoomax={2.,1.};
+    double[] zoomin={0.5,0.5};
+    double[] zoomax={2.,5.};
     double[] incrzoom={0.05,0.05};
-    int[] nticszoom={1+(int)((zoomax[0]-zoomin[0])/incrzoom[0]),(int)(1+(zoomax[1]-zoomin[1])/incrzoom[1])};
+    int[] nticszoom={(int)((zoomax[0]-zoomin[0])/incrzoom[0]),(int)((zoomax[1]-zoomin[1])/incrzoom[1])};
 
     double zcover=20.E-6;
     double ztrap;
