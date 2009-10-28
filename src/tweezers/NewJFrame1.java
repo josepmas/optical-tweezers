@@ -8,12 +8,15 @@ package tweezers;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.opensourcephysics.display.*;
 import org.opensourcephysics.numerics.*;
 import org.opensourcephysics.frames.*;
 import java.text.DecimalFormat;
 import java.util.Random;
-
+import java.net.URL;
 /**
  *
  * @author 
@@ -42,6 +45,7 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
     double time=0.;
     DecimalFormat df = new DecimalFormat("0.00");
     DecimalFormat df1 = new DecimalFormat("0.0");
+    DecimalFormat df3 = new DecimalFormat("0.000");
     DecimalFormat intf = new DecimalFormat("#");
     DecimalFormat ef= new DecimalFormat("0.0E0");
     Thread resoldre = new calcThread();
@@ -62,6 +66,16 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
     /** Creates new form NewJFrame */
 //    public NewJFrame1(NewJApplet applet) {
     public NewJFrame1() {
+/**        URL info_page;
+        String s = "C:/Documents and Settings/pep/Mis documentos/NetBeansProjects/optical-tweezers-hg/src/description.html";
+        info_page = getClass().getResource(s);
+        System.out.println(info_page);
+        try {
+            jTextPane3.setPage(info_page);
+        } catch (IOException ex) {
+            System.out.println("Unable to read html page +"+info_page);
+            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
+        }**/
         par.initialized = false;
         this.addWindowListener(this);
         initComponents();
@@ -103,6 +117,7 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
         par.n2=par.n2default;
         par.n1=par.n1default;
         par.NA=par.NAdefault;
+        par.lambda=par.lambdadefault;
         jPaneldt.setVisible(false);
         setDefaultSettings();
         par.calcParDependents();
@@ -325,11 +340,11 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
             jLabel16.setVisible(true);
             jLabelzc.setText(df.format(par.ztrap/par.scale));
             jLabelzc2.setText(df.format(par.ztrap/par.scale));
-            jLabelkz.setText(df.format(par.kz*1.E6));
+            jLabelkz.setText(df3.format(par.kz*1.E6));
             jLabelQzmaxup.setText(df.format(par.Qzmaxup));
             jLabelQzmaxdown.setText(df.format(par.Qzmaxdown));
             jLabelQxmax.setText(df.format(par.Qxmax));
-            jLabelkx.setText(df.format(par.kx));
+            jLabelkx.setText(df3.format(par.kx*1.E6));
         }else{
             jToggleButton2.setEnabled(false);
             //jLabel15.setVisible(false);
@@ -340,7 +355,7 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
             jLabelQzmaxup.setText("-");
             jLabelQzmaxdown.setText("-");
             jLabelQxmax.setText(df.format(par.Qxmax));
-            jLabelkx.setText(df.format(par.kx));            
+            jLabelkx.setText(df3.format(par.kx*1.E6));
         }
         profile.representar(Zforceprofilepanel, Yforceprofilepanel, par);
         jPanelForce.repaint();
@@ -818,7 +833,8 @@ public void calibrateOFF(){
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
         jFrameHelp = new javax.swing.JFrame();
-        jLabel14 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
         jFrameNumbers = new javax.swing.JFrame();
         jPanel12 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -1334,23 +1350,23 @@ public void calibrateOFF(){
         jFrameHelp.setTitle("Help");
         jFrameHelp.setMinimumSize(new java.awt.Dimension(200, 200));
 
-        jLabel14.setText("Soon available...");
+        jScrollPane4.setViewportView(jTextPane3);
 
         javax.swing.GroupLayout jFrameHelpLayout = new javax.swing.GroupLayout(jFrameHelp.getContentPane());
         jFrameHelp.getContentPane().setLayout(jFrameHelpLayout);
         jFrameHelpLayout.setHorizontalGroup(
             jFrameHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameHelpLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel14)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jFrameHelpLayout.setVerticalGroup(
             jFrameHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameHelpLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jLabel14)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(106, 106, 106)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jFrameNumbers.setTitle("Force curves parameters");
@@ -1479,10 +1495,10 @@ public void calibrateOFF(){
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel30))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelzc)
                     .addComponent(jLabel15)
@@ -3605,7 +3621,6 @@ public void calibrateOFF(){
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -3702,6 +3717,7 @@ public void calibrateOFF(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSlider11;
     private javax.swing.JSlider jSlider14;
@@ -3735,6 +3751,7 @@ public void calibrateOFF(){
     private javax.swing.JFormattedTextField jText8;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;

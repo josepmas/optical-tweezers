@@ -57,9 +57,15 @@ public class Perfils {
             }
         }
         par.Qxmax=fmaxy*1.E12;
-        double[] pleft =datasetY[0].getPoints()[(int)par.Npointsperfils/2-2];
-        double[] pright = datasetY[0].getPoints()[(int)par.Npointsperfils/2+2];
-        par.kx=(pleft[1]-pright[1])/(pleft[0]-pright[0]);
+//        double[] pleft =datasetY[0].getPoints()[(int)par.Npointsperfils/2-2];
+//        double[] pright = datasetY[0].getPoints()[(int)par.Npointsperfils/2+2];
+        //par.kx=(pleft[1]-pright[1])/(pleft[0]-pright[0]);
+        double xleft=-par.dx4kx[par.regim];
+        double xright=par.dx4kx[par.regim];
+        double Fyleft=forces.calc(par, raigs, 0., xleft, ztrap)[0][1];
+        double Fyright=forces.calc(par, raigs, 0., xright, ztrap)[0][1];
+        par.kx=(Fyleft-Fyright)/(xleft-xright);
+
         for (int i=0;i<3;i++){
             datasetY[i].setConnected(true);
             datasetY[i].setSorted(true);
@@ -120,6 +126,29 @@ public void perfilZ(PlottingPanel panell, Parametres par,double yc){
             par.ztrap=-Qleft*((zright-zleft)/(Qright-Qleft))+zleft;
             par.ztrapfound=true;
             indexzeq=count; //per kz
+            par.kz=(F[indexzeq-1]-F[indexzeq+1])/(z[indexzeq-1]-z[indexzeq+1]);
+
+            //Refinar ztrap i kz
+            double Fleftfi,Frightfi,zleftfi,zrightfi,Qzfi,Qzfiantic=1,zfineantic=zleft;
+            boolean zfinefound=false;
+            for(double zfine=zleft;zfine<=zright;zfine=zfine+(zright-zleft)/(double)par.Npointsrefinats){
+                Qzfi=forces.calc(par,raigs,0.,yc,zfine)[0][2];
+                if(!zfinefound && (Qzfiantic*Qzfi)<0. && zfine>0.){
+                    zfinefound=true;
+                    Fleftfi=Qzfiantic;
+                    Frightfi=Qzfi;
+                    zleftfi=zfineantic;
+                    zrightfi=zfine;
+                    //System.out.println(par.kz+" "+par.ztrap);//zleft+" "+zright+" "+Qleft+" "+Qright+" "+
+                    par.ztrap=-Fleftfi*((zrightfi-zleftfi)/(Frightfi-Fleftfi))+zleftfi;
+                    par.kz=(Frightfi-Fleftfi)/(zrightfi-zleftfi);
+                    //System.out.println(par.kz+" "+par.ztrap);//zleftfi+" "+zrightfi+" "+Fleftfi+" "+Frightfi+" "+
+                    //System.out.println("-----------");
+                }
+                zfineantic=zfine;
+                Qzfiantic=Qzfi;
+            }
+
             //System.out.println(indexzeq);
 //            System.out.println("Trap candidates: "+zc+" Qzantic="+Qzantic+" QZactual="+QZ[0][2]);
         }
@@ -140,8 +169,6 @@ public void perfilZ(PlottingPanel panell, Parametres par,double yc){
     }else{
         par.Qzmaxdown=op.max(qz);
         par.Qzmaxup=op.min(qz);
-        
-        par.kz=(F[indexzeq-1]-F[indexzeq+1])/(z[indexzeq-1]-z[indexzeq+1]);
     }
 
 

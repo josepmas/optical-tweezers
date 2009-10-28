@@ -23,15 +23,16 @@ public class Parametres {
     double Pmax=100;//mW from the laser
     double Pdefault=50.*scaleP;
     double P= Pdefault;
-    double incrP=1;//1mW
+    double incrP=1.;//1mW
     int nticsP=100;//(int)((Pmax-Pmin)/incrP);
 
     double scaleL = Math.pow(10, -9);
-    double lambda= 543.*scaleL;//longitud d'ona del laser en nm
+    double lambdadefault=543.*scaleL;
+    double lambda= lambdadefault;//longitud d'ona del laser en nm
     double lambdamin=300.;
     double lambdamax=1200.;
-    double incrlambda=5.;
-    int nticslambda=(int)((lambdamax-lambdamin)/incrlambda);
+    double incrlambda=1.;
+    int nticslambda=(int)(1+(lambdamax-lambdamin)/incrlambda);
     
     
     //double nimmersion=1.33;//33;//1.516; 
@@ -40,21 +41,21 @@ public class Parametres {
     double n1default=1.331;
     double n1 = n1default;//1.333; //�ndex refracci� medi
     double incrn1=0.01;
-    int nticsn1 = (int)((n1max-n1min)/incrn1)+1;
+    int nticsn1 = (int)(1+(n1max-n1min)/incrn1);
     
     double n2min=1.00;
-    double n2max=3.;
+    double n2max=2.;
     double n2default=1.58;
     double n2 = n2default; //�ndex bola poliestir�
     double incrn2=0.01;
-    int nticsn2 = (int)((n2max-n2min)/incrn2)+1;
+    int nticsn2 = (int)(1+(n2max-n2min)/incrn2);
     
     double NAmin=0.1;//-n1;
     double NAmax=1.3;//nimmersion;//n1*0.99;
     double NAdefault=1.25;
     double NA=NAdefault;
     double incrNA= 0.01;
-    int nticsNA = (int)((NAmax-NAmin)/incrNA);
+    int nticsNA = (int)(1+(NAmax-NAmin)/incrNA);
 
     double scalew0=1.E-6;
     double w0max=2.*lambdamin*scaleL/(Math.PI*NAmin);
@@ -62,7 +63,7 @@ public class Parametres {
     double w0default=2.*lambda/(Math.PI*0.65);
     double w0=w0default;//=2*lambda/(n1*Math.PI*NA);
     double incrw0=1.E-9;
-    int nticsw0=(int)((w0max-w0min)/incrw0);
+    int nticsw0=(int)(1+(w0max-w0min)/incrw0);
 //    double augments = 100;
 //    double augmentsmax=100;
 //    double augmentsmin=10;
@@ -73,19 +74,19 @@ public class Parametres {
     //double Rpemax=0.1;//NAmax*fmax;
         
     double[] scaleR={Math.pow(10, -6),Math.pow(10,-9)};    //escala de R en el panell d'entrada de dades
-    double[] Rmax ={10.E-6, 100.E-9}; //els limits es podrien recalcular en funcio de lambda.
-    double[] Rmin = {1.E-6, 20.E-9};
+    double[] Rmax ={10.E-6, 50.E-9}; //els limits es podrien recalcular en funcio de lambda.
+    double[] Rmin = {1.E-6, 10.E-9};
     double[] Rdefault = {5.E-6,50.E-9};//{(Rmax[0]+Rmin[0])/2., (Rmax[1]+Rmin[1])/2.};
     double R = Rdefault[0]; //Radi en micròmetres (rang entre 0.08 i 100 micrometres)
     double[] incrR={0.1E-6,1E-9};
-    int[] nticsR = {(int)((Rmax[0]-Rmin[0])/incrR[0]),(int) ((Rmax[1]-Rmin[1])/incrR[1])};
+    int[] nticsR = {(int)(1+(Rmax[0]-Rmin[0])/incrR[0]),(int) (1+(Rmax[1]-Rmin[1])/incrR[1])};
     
     double scalevisc=1E-3;
     double visc=8.90*Math.pow(10,-4); //viscositat de l'aigua en Pa�s
-    double viscmax=1E-2;
-    double viscmin=1E-4;
+    double viscmax=0.0100;
+    double viscmin=0.0001;
     double incrvisc=0.01*scalevisc;
-    int nticsvisc=(int)((viscmax-viscmin)/incrvisc);
+    int nticsvisc=(int)(1+(viscmax-viscmin)/incrvisc);
     boolean water=false;
     
     double T = 300;//temperatura en K
@@ -111,14 +112,14 @@ public class Parametres {
     double waist2pupilmin=0.1;
     double waist2pupildefault=1.;
     double incrwaist2pupil=0.01;
-    int nticswaist2pupil = (int)((waist2pupilmax-waist2pupilmin)/incrwaist2pupil);
+    int nticswaist2pupil = (int)((waist2pupilmax-waist2pupilmin)/incrwaist2pupil)+1;
     
     double[] zoomdefault = {0.6,0.4};
     double zoom =zoomdefault[regim];
     double[] zoomin={0.05,0.05};
     double[] zoomax={2.,1.};
     double[] incrzoom={0.05,0.05};
-    int[] nticszoom={(int)((zoomax[0]-zoomin[0])/incrzoom[0]),(int)((zoomax[1]-zoomin[1])/incrzoom[1])};
+    int[] nticszoom={1+(int)((zoomax[0]-zoomin[0])/incrzoom[0]),(int)(1+(zoomax[1]-zoomin[1])/incrzoom[1])};
 
     double zcover=20.E-6;
     double ztrap;
@@ -135,6 +136,8 @@ public class Parametres {
     int Nraigdmin=0;
     int Nraigmax=Math.max(Nraigforce,Nraigperfils); 
     int Npointsperfils=100;
+    int Npointsrefinats=30;
+    double[] dx4kx={0.001E-6,0.001E-9};
     double wcov;//=0.001;
     double timemax=1.;
     double[] dtdefault ={1.e-4,5.0e-7};
