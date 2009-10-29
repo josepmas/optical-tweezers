@@ -1299,7 +1299,7 @@ public void calibrateOFF(){
         jFrameAbout.setMinimumSize(new java.awt.Dimension(400, 300));
 
         jTextPane1.setEditable(false);
-        jTextPane1.setText("Grup d'Innovació Docent en Òptica Física i Fotònica\nUniversitat de Barcelona, 2008\nhttp//www.ub.edu/javaoptics\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n \nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.\n \nYou should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.\n \nThis program uses part of the Open Source Physics Library, http://www.opensourcephysics.org");
+        jTextPane1.setText("Grup d'Innovació Docent en Òptica Física i Fotònica\nUniversitat de Barcelona, 2009\nhttp//www.ub.edu/javaoptics\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n \nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.\n \nYou should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.\n \nThis program uses part of the Open Source Physics Library (http://www.opensourcephysics.org) and The Apache Commons Mathematics Library (http://commons.apache.org/math/). The program has been compiled using JDK 1.6 Java platform. The source code and the last executable version can be downloaded from http://code.google.com/p/optical-tweezers/.");
         jScrollPane1.setViewportView(jTextPane1);
 
         javax.swing.GroupLayout jFrameAboutLayout = new javax.swing.GroupLayout(jFrameAbout.getContentPane());
@@ -3366,7 +3366,6 @@ public void calibrateOFF(){
             // TODO add your handling code here:
             par.zoom = (double)jSliderfield.getValue()*par.incrzoom[par.regim]+par.zoomin[par.regim];
             jLabelfield.setText(df.format(par.zoom)+"X");//(df.format(par.fieldforces[par.regim]/par.scale)+"\u03BC"+"m");
-
         }//GEN-LAST:event_jSliderfieldStateChanged
 
         private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
