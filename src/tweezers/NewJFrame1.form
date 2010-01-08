@@ -628,26 +628,38 @@
       <Properties>
         <Property name="title" type="java.lang.String" value="Help"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[200, 200]"/>
+          <Dimension value="[800, 800]"/>
         </Property>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" min="-2" pref="371" max="-2" attributes="0"/>
-                  <EmptySpace pref="54" max="32767" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jScrollPane4" alignment="0" pref="710" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="drawingPanel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="drawingPanel8" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" min="-2" pref="256" max="-2" attributes="0"/>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" min="-2" pref="412" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="drawingPanel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="drawingPanel8" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -661,9 +673,27 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
             <Component class="javax.swing.JTextPane" name="jTextPane3">
+              <Properties>
+                <Property name="contentType" type="java.lang.String" value="text/html"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xd;&#xa;  &lt;head&gt;&#xd;&#xa;&#xd;&#x9;&lt;TITLE&gt;Applet Description &lt;/TITLE&gt;&#xa;  &lt;/head&gt;&#xd;&#xa;  &lt;body&gt;&#xd;&#xa;    &lt;p style=&quot;margin-top: 0&quot;&gt;&#xd;&#xa;&#xa;&lt;TABLE CLASS=&quot;title&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;H1 CLASS=&quot;titlemain&quot;&gt;Applet Description&lt;/H1&gt;&lt;/TD&gt;&lt;/TR&gt;&#xa;&lt;/TABLE&gt;&#xa;&lt;H2 CLASS=&quot;section&quot;&gt;Description of the application&lt;/H2&gt;&lt;P&gt;The applet simulates the behavior of a spherical dielectric particle trapped by means of a laser beam focused by a microscope objective. The program and the source code can be downloaded from &lt;A HREF=&quot;http://code.google.com/p/optical-tweezers/&quot;&gt;&lt;TT&gt;http://code.google.com/p/optical-tweezers/&lt;/TT&gt;&lt;/A&gt;. The simulation, including the movement of the particle, is confined to the &lt;I&gt;xz&lt;/I&gt; plane. The calculation of the trapping force is carried out in the geometrical optics approach (Mie approximation) or in the Rayleigh approximation, according to the size of the particle. The user can select the proper working conditions by using the selector located at the left panel. &#xa;&lt;/P&gt;&#xa;&#xa;&lt;P&gt;On the left panel, a transversal section of the optical trap is shown. The &lt;I&gt;z&lt;/I&gt;&amp;#X2212;axis corresponds to the beam propagation direction while the &lt;I&gt;x&lt;/I&gt;&amp;#X2212;axis is the transversal coordinate. Both, the studied particle and the trapping light beam, are represented in this panel. The optional buttons below the trap diagram allow the visualization of three vectors representing the scattering, gradient and net force exerted by the beam at the current position of the particle. The current modulus of the net force (in &lt;I&gt;pN&lt;/I&gt;) is shown below the trap diagram.&lt;/P&gt;&lt;P&gt;The particle can be clicked and dragged to a new position. Starting from the position selected by the user, a simulation of the particle trajectory is calculated when the &amp;#X2019;Animation&amp;#X2019; button is clicked. For every animation frame, the time indication is shown below the trap diagram. The button &amp;#X2019;Take bead to focus&amp;#X2019; is used to place the particle in the center of the panel. The required data to perform this simulation comes from the dynamic solution of the Langevin equation &lt;/P&gt;&lt;TABLE CLASS=&quot;display dcenter&quot;&gt;&lt;TR VALIGN=&quot;middle&quot;&gt;&lt;TD CLASS=&quot;dcell&quot;&gt;&lt;A NAME=&quot;eq:eqmotion&quot;&gt;&#xa0;&lt;/A&gt;&#xa;&lt;I&gt;m&lt;/I&gt;&lt;I&gt;x&lt;/I&gt;&#xa0;=&#xa0;&amp;#X2212;&amp;#X3B3;&#xa0;&amp;#X1E8B;&#xa0;&amp;#X2212;&#xa0;&lt;I&gt;k&lt;/I&gt;&lt;SUB&gt;&lt;I&gt;x&lt;/I&gt;&lt;/SUB&gt;&lt;I&gt;x&lt;/I&gt;&#xa0;+&#xa0;&lt;/TD&gt;&lt;TD CLASS=&quot;dcell&quot;&gt;&lt;FONT SIZE=5&gt;&amp;#X221A;&lt;/FONT&gt;&lt;/TD&gt;&lt;TD CLASS=&quot;dcell&quot;&gt;&lt;TABLE border=0 cellspacing=1 cellpadding=0&gt;&lt;TR&gt;&lt;TD CLASS=&quot;hbar&quot;&gt;&lt;/TD&gt;&lt;/TR&gt;&#xa;&lt;TR&gt;&lt;TD ALIGN=center NOWRAP&gt;2&lt;I&gt;k&lt;/I&gt;&lt;SUB&gt;&lt;I&gt;B&lt;/I&gt;&lt;/SUB&gt;&lt;I&gt;T&lt;/I&gt;&amp;#X3B3;&#xa0;&lt;/TD&gt;&lt;/TR&gt;&#xa;&lt;/TABLE&gt;&lt;/TD&gt;&lt;TD CLASS=&quot;dcell&quot;&gt;&amp;#X3BE;&#xa0;(&lt;I&gt;t&lt;/I&gt;).&#xa;&#xa0;&#xa0;&#xa0;&#xa0;(1)&lt;/TD&gt;&lt;/TR&gt;&#xa;&lt;/TABLE&gt;&lt;P&gt;The time step used for the integration of the differential equation can be modified by activating the optional &amp;#X2019;Time step&amp;#X2019; slider from the &amp;#X2019;View&amp;#X2019; menu. Special care must be taken when selecting high time step values: if time step is much higher than the characteristic time scale of the bead movement within the optical trap (which depends on the selected experimental settings), the program could report non-realistic animations.&lt;/P&gt;&lt;P&gt;In the Mie regime the light beam is represented as a group of several converging light rays, which are refracted through the dielectric particle. The momentum transferred to the particle, i.e. the force exerted by the beam, is obtained by calculating the global direction change of the rays. The power associated to each ray is weighted according to a Gaussian intensity profile. In the Rayleigh regime, the laser beam is represented by the intensity map of the Gaussian beam. &lt;/P&gt;&lt;P&gt;On the right panel there are two different tabs for configuring and analyzing the experiment. In the first tab (&amp;#X2019;Experimental settings&amp;#X2019;) the user can tune the values of the variables. The available parameters are the power and the wavelength of the laser, the numerical aperture of microscope objective, the overfilling factor, the radius and the refractive index of the trapped particle, the viscosity and the refractive index of the medium and the temperature. Notice that when using high numerical aperture (NA) objectives, it is not possible to set the beam waist &lt;I&gt;w&lt;/I&gt;&lt;SUB&gt;0&lt;/SUB&gt; as a function of NA by means a simple formula &lt;SUP&gt;&lt;A NAME=&quot;text1&quot; HREF=&quot;#note1&quot;&gt;1&lt;/A&gt;&lt;/SUP&gt;.&lt;/P&gt;&lt;P&gt;The overfilling factor &amp;#X3B3; is the ratio between the full width at half maximum (FWHM) of the beam intensity profile and the diameter of the objective entrance pupil. The modification of the overfilling value changes the fraction of power that crosses the entrance pupil, but also affects the force field shape and the trap stability, as it is analized in the next section. In the program the overfilling factor setting is only available for the Ray optics regime, where the relative power associated to each ray changes depending on the overfilling factor. In the Rayleigh regime the overfilling setting cannot be implemented because the computational cost is too high for performing the calculations in real-time during the animation. &lt;/P&gt;&lt;P&gt;By clicking on the &amp;#X2019;Force analysis&amp;#X2019; tab the user can visualize the force field created by the optical trap. In particular, the behavior of the transversal &lt;I&gt;F&lt;/I&gt;&lt;SUP&gt;&lt;I&gt;x&lt;/I&gt;&lt;/SUP&gt;(&lt;I&gt;x&lt;/I&gt;) and longitudinal &lt;I&gt;F&lt;/I&gt;&lt;SUP&gt;&lt;I&gt;z&lt;/I&gt;&lt;/SUP&gt;(&lt;I&gt;z&lt;/I&gt;) components of the force is shown. The scattering and gradient components and the net force can be selected independently by clicking on the left panel.The transversal force curve is calculated at &lt;I&gt;z&lt;/I&gt;&lt;SUB&gt;trap&lt;/SUB&gt; (but if &lt;I&gt;z&lt;/I&gt;&lt;SUB&gt;trap&lt;/SUB&gt; does not exist, &lt;I&gt;F&lt;/I&gt;&lt;SUP&gt;&lt;I&gt;x&lt;/I&gt;&lt;/SUP&gt;(&lt;I&gt;x&lt;/I&gt;) is obtained at &lt;I&gt;z&lt;/I&gt;=0). By clicking to &amp;#X2019;Plot details&amp;#X2019; button, a new window pops-up indicating a set of parameters obtained from the force curves. If the selected values in the &amp;#X2019;Experimental settings&amp;#X2019; tab allow a stable trap, the equilibrium position and the curves slope are calculated. The maximum values of the force are also shown. &lt;/P&gt;&lt;P&gt;If the configured beam is able to trap particles, the net transversal force component &lt;I&gt;F&lt;/I&gt;&lt;SUP&gt;&lt;I&gt;x&lt;/I&gt;&lt;/SUP&gt;(&lt;I&gt;x&lt;/I&gt;) displays a linear behavior in the central area of the trap. Its slope provide a measure of the stiffness &lt;I&gt;k&lt;/I&gt; of the trap, as is explained in the previous section. When the &amp;#X2019;Calibrate&amp;#X2019; button is clicked, the transversal stiffness of the trap is obtained by means of the calibration method based on the analysis of the Brownian motion. While the projection of the trajectory of the bead on the &lt;I&gt;x&lt;/I&gt;&amp;#X2212;axis is calculated, the &lt;I&gt;x&lt;/I&gt;&amp;#X2212;position histogram is updated and the trap stiffness is continuously calculated from the x-standard deviation and shown below the histogram. This procedure emulates a continuous position measurement in the laboratory. When the number of collected points is high enough, the stiffness value stabilizes and the histogram displays a characteristic Gaussian shape. The stiffness obtained with this method should match the slope of the transversal force curve.&lt;/P&gt;&#xa;&lt;HR CLASS=&quot;footnoterule&quot;&gt;&lt;DL CLASS=&quot;thefootnotes&quot;&gt;&lt;DT CLASS=&quot;dt-thefootnotes&quot;&gt;&#xa;&lt;A NAME=&quot;note1&quot; HREF=&quot;#text1&quot;&gt;1&lt;/A&gt;&lt;/DT&gt;&lt;DD CLASS=&quot;dd-thefootnotes&quot;&gt;NA=&lt;I&gt;n&lt;/I&gt;&lt;SUB&gt;1&lt;/SUB&gt;sin&amp;#X3B8;&lt;SUB&gt;max&lt;/SUB&gt;, being &amp;#X3B8;&lt;SUB&gt;max&lt;/SUB&gt; the angle defined by the &lt;I&gt;z&lt;/I&gt;&amp;#X2212;axis and the marginal ray.&#xa;&lt;/DD&gt;&lt;/DL&gt;&#xa;&#xa;    &lt;/p&gt;&#xd;&#xa;  &lt;/body&gt;&#xd;&#xa;&lt;/html&gt;&#xd;&#xa;"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
+        <Component class="org.opensourcephysics.display.DrawingPanel" name="drawingPanel5">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[352, 286]"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="org.opensourcephysics.display.DrawingPanel" name="drawingPanel8">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[352, 280]"/>
+            </Property>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="jFrameNumbers">
@@ -1081,7 +1111,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Tweezers Help"/>
+                <Property name="text" type="java.lang.String" value="Applet description"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>

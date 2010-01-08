@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
+import java.lang.Exception;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.opensourcephysics.display.*;
@@ -17,6 +18,8 @@ import org.opensourcephysics.frames.*;
 import java.text.DecimalFormat;
 import java.util.Random;
 import java.net.URL;
+import org.opensourcephysics.tools.ResourceLoader;
+import org.opensourcephysics.tools.Resource;
 /**
  *
  * @author 
@@ -66,16 +69,22 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
     /** Creates new form NewJFrame */
 //    public NewJFrame1(NewJApplet applet) {
     public NewJFrame1() {
-/**        URL info_page;
-        String s = "C:/Documents and Settings/pep/Mis documentos/NetBeansProjects/optical-tweezers-hg/src/description.html";
-        info_page = getClass().getResource(s);
-        System.out.println(info_page);
-        try {
-            jTextPane3.setPage(info_page);
-        } catch (IOException ex) {
-            System.out.println("Unable to read html page +"+info_page);
-            Logger.getLogger(NewJFrame1.class.getName()).log(Level.SEVERE, null, ex);
-        }**/
+/**   String s = null;
+   URL info_page = null;
+   try {
+
+     s="DocA_PolarCa.html";
+     info_page = getClass().getResource(s);
+   } catch (Exception eee) {
+     System.err.println("Couldn't create help URL: " + s);
+   }
+
+   try{
+     jTextPane3.setPage(info_page);
+   } catch (Exception e) {
+     System.err.println("Attempted to read a bad URL: " + info_page);
+   }**/
+
         par.initialized = false;
         this.addWindowListener(this);
         initComponents();
@@ -355,7 +364,7 @@ public class NewJFrame1 extends javax.swing.JFrame implements WindowListener {
             jLabelQzmaxup.setText("-");
             jLabelQzmaxdown.setText("-");
             jLabelQxmax.setText(df.format(par.Qxmax));
-            jLabelkx.setText(df3.format(par.kx*1.E6));
+            jLabelkx.setText("-");//jLabelkx.setText(df3.format(par.kx*1.E6));
         }
         profile.representar(Zforceprofilepanel, Yforceprofilepanel, par);
         jPanelForce.repaint();
@@ -835,6 +844,8 @@ public void calibrateOFF(){
         jFrameHelp = new javax.swing.JFrame();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
+        drawingPanel5 = new org.opensourcephysics.display.DrawingPanel();
+        drawingPanel8 = new org.opensourcephysics.display.DrawingPanel();
         jFrameNumbers = new javax.swing.JFrame();
         jPanel12 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
@@ -1348,25 +1359,40 @@ public void calibrateOFF(){
         );
 
         jFrameHelp.setTitle("Help");
-        jFrameHelp.setMinimumSize(new java.awt.Dimension(200, 200));
+        jFrameHelp.setMinimumSize(new java.awt.Dimension(800, 800));
 
+        jTextPane3.setContentType("text/html");
+        jTextPane3.setText("<html>\r\n  <head>\r\n\r\t<TITLE>Applet Description </TITLE>\n  </head>\r\n  <body>\r\n    <p style=\"margin-top: 0\">\r\n\n<TABLE CLASS=\"title\"><TR><TD><H1 CLASS=\"titlemain\">Applet Description</H1></TD></TR>\n</TABLE>\n<H2 CLASS=\"section\">Description of the application</H2><P>The applet simulates the behavior of a spherical dielectric particle trapped by means of a laser beam focused by a microscope objective. The program and the source code can be downloaded from <A HREF=\"http://code.google.com/p/optical-tweezers/\"><TT>http://code.google.com/p/optical-tweezers/</TT></A>. The simulation, including the movement of the particle, is confined to the <I>xz</I> plane. The calculation of the trapping force is carried out in the geometrical optics approach (Mie approximation) or in the Rayleigh approximation, according to the size of the particle. The user can select the proper working conditions by using the selector located at the left panel. \n</P>\n\n<P>On the left panel, a transversal section of the optical trap is shown. The <I>z</I>&#X2212;axis corresponds to the beam propagation direction while the <I>x</I>&#X2212;axis is the transversal coordinate. Both, the studied particle and the trapping light beam, are represented in this panel. The optional buttons below the trap diagram allow the visualization of three vectors representing the scattering, gradient and net force exerted by the beam at the current position of the particle. The current modulus of the net force (in <I>pN</I>) is shown below the trap diagram.</P><P>The particle can be clicked and dragged to a new position. Starting from the position selected by the user, a simulation of the particle trajectory is calculated when the &#X2019;Animation&#X2019; button is clicked. For every animation frame, the time indication is shown below the trap diagram. The button &#X2019;Take bead to focus&#X2019; is used to place the particle in the center of the panel. The required data to perform this simulation comes from the dynamic solution of the Langevin equation </P><TABLE CLASS=\"display dcenter\"><TR VALIGN=\"middle\"><TD CLASS=\"dcell\"><A NAME=\"eq:eqmotion\"> </A>\n<I>m</I><I>x</I> = &#X2212;&#X3B3; &#X1E8B; &#X2212; <I>k</I><SUB><I>x</I></SUB><I>x</I> + </TD><TD CLASS=\"dcell\"><FONT SIZE=5>&#X221A;</FONT></TD><TD CLASS=\"dcell\"><TABLE border=0 cellspacing=1 cellpadding=0><TR><TD CLASS=\"hbar\"></TD></TR>\n<TR><TD ALIGN=center NOWRAP>2<I>k</I><SUB><I>B</I></SUB><I>T</I>&#X3B3; </TD></TR>\n</TABLE></TD><TD CLASS=\"dcell\">&#X3BE; (<I>t</I>).\n    (1)</TD></TR>\n</TABLE><P>The time step used for the integration of the differential equation can be modified by activating the optional &#X2019;Time step&#X2019; slider from the &#X2019;View&#X2019; menu. Special care must be taken when selecting high time step values: if time step is much higher than the characteristic time scale of the bead movement within the optical trap (which depends on the selected experimental settings), the program could report non-realistic animations.</P><P>In the Mie regime the light beam is represented as a group of several converging light rays, which are refracted through the dielectric particle. The momentum transferred to the particle, i.e. the force exerted by the beam, is obtained by calculating the global direction change of the rays. The power associated to each ray is weighted according to a Gaussian intensity profile. In the Rayleigh regime, the laser beam is represented by the intensity map of the Gaussian beam. </P><P>On the right panel there are two different tabs for configuring and analyzing the experiment. In the first tab (&#X2019;Experimental settings&#X2019;) the user can tune the values of the variables. The available parameters are the power and the wavelength of the laser, the numerical aperture of microscope objective, the overfilling factor, the radius and the refractive index of the trapped particle, the viscosity and the refractive index of the medium and the temperature. Notice that when using high numerical aperture (NA) objectives, it is not possible to set the beam waist <I>w</I><SUB>0</SUB> as a function of NA by means a simple formula <SUP><A NAME=\"text1\" HREF=\"#note1\">1</A></SUP>.</P><P>The overfilling factor &#X3B3; is the ratio between the full width at half maximum (FWHM) of the beam intensity profile and the diameter of the objective entrance pupil. The modification of the overfilling value changes the fraction of power that crosses the entrance pupil, but also affects the force field shape and the trap stability, as it is analized in the next section. In the program the overfilling factor setting is only available for the Ray optics regime, where the relative power associated to each ray changes depending on the overfilling factor. In the Rayleigh regime the overfilling setting cannot be implemented because the computational cost is too high for performing the calculations in real-time during the animation. </P><P>By clicking on the &#X2019;Force analysis&#X2019; tab the user can visualize the force field created by the optical trap. In particular, the behavior of the transversal <I>F</I><SUP><I>x</I></SUP>(<I>x</I>) and longitudinal <I>F</I><SUP><I>z</I></SUP>(<I>z</I>) components of the force is shown. The scattering and gradient components and the net force can be selected independently by clicking on the left panel.The transversal force curve is calculated at <I>z</I><SUB>trap</SUB> (but if <I>z</I><SUB>trap</SUB> does not exist, <I>F</I><SUP><I>x</I></SUP>(<I>x</I>) is obtained at <I>z</I>=0). By clicking to &#X2019;Plot details&#X2019; button, a new window pops-up indicating a set of parameters obtained from the force curves. If the selected values in the &#X2019;Experimental settings&#X2019; tab allow a stable trap, the equilibrium position and the curves slope are calculated. The maximum values of the force are also shown. </P><P>If the configured beam is able to trap particles, the net transversal force component <I>F</I><SUP><I>x</I></SUP>(<I>x</I>) displays a linear behavior in the central area of the trap. Its slope provide a measure of the stiffness <I>k</I> of the trap, as is explained in the previous section. When the &#X2019;Calibrate&#X2019; button is clicked, the transversal stiffness of the trap is obtained by means of the calibration method based on the analysis of the Brownian motion. While the projection of the trajectory of the bead on the <I>x</I>&#X2212;axis is calculated, the <I>x</I>&#X2212;position histogram is updated and the trap stiffness is continuously calculated from the x-standard deviation and shown below the histogram. This procedure emulates a continuous position measurement in the laboratory. When the number of collected points is high enough, the stiffness value stabilizes and the histogram displays a characteristic Gaussian shape. The stiffness obtained with this method should match the slope of the transversal force curve.</P>\n<HR CLASS=\"footnoterule\"><DL CLASS=\"thefootnotes\"><DT CLASS=\"dt-thefootnotes\">\n<A NAME=\"note1\" HREF=\"#text1\">1</A></DT><DD CLASS=\"dd-thefootnotes\">NA=<I>n</I><SUB>1</SUB>sin&#X3B8;<SUB>max</SUB>, being &#X3B8;<SUB>max</SUB> the angle defined by the <I>z</I>&#X2212;axis and the marginal ray.\n</DD></DL>\n\n    </p>\r\n  </body>\r\n</html>\r\n");
         jScrollPane4.setViewportView(jTextPane3);
+
+        drawingPanel5.setPreferredSize(new java.awt.Dimension(352, 286));
+
+        drawingPanel8.setPreferredSize(new java.awt.Dimension(352, 280));
 
         javax.swing.GroupLayout jFrameHelpLayout = new javax.swing.GroupLayout(jFrameHelp.getContentPane());
         jFrameHelp.getContentPane().setLayout(jFrameHelpLayout);
         jFrameHelpLayout.setHorizontalGroup(
             jFrameHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrameHelpLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrameHelpLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jFrameHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jFrameHelpLayout.createSequentialGroup()
+                        .addComponent(drawingPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(drawingPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jFrameHelpLayout.setVerticalGroup(
             jFrameHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrameHelpLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jFrameHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(drawingPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(drawingPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jFrameNumbers.setTitle("Force curves parameters");
@@ -2657,7 +2683,7 @@ public void calibrateOFF(){
         });
         jMenu2.add(jMenuItem5);
 
-        jMenuItem6.setText("Tweezers Help");
+        jMenuItem6.setText("Applet description");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -3252,7 +3278,16 @@ public void calibrateOFF(){
 
         private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
             // TODO add your handling code here:
-            jFrameHelp.setVisible(true);
+        String sfig1="description001.jpg";
+        Resource resfig1= ResourceLoader.getResource(sfig1);
+        MeasuredImage mifig1 = new MeasuredImage(resfig1.getBufferedImage(),-1,1,-1,1);
+        drawingPanel5.addDrawable(mifig1);
+        
+        String sfig2="description002.jpg";
+        Resource resfig2= ResourceLoader.getResource(sfig2);
+        MeasuredImage mifig2 = new MeasuredImage(resfig2.getBufferedImage(),-1,1,-1,1);
+        drawingPanel8.addDrawable(mifig2);
+        jFrameHelp.setVisible(true);
         }//GEN-LAST:event_jMenuItem6ActionPerformed
 
         private void jMenuItem2ActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed1
@@ -3328,7 +3363,7 @@ public void calibrateOFF(){
             //double w0 = ((double) jSlider2.getValue() * (par.w0max - par.w0min) / (double)jSlider2.getMaximum() + par.w0min);
             jText2.setText(df.format(w0/par.scalew0));
             par.w0 = w0;
-            par.estimatedNA=2.*par.lambda/Math.PI/par.w0;
+            par.estimatedNA=par.lambda/Math.PI/par.w0;
             double angleNA=Math.asin(par.estimatedNA/par.n1);
             jLabelNA.setText(df.format(par.estimatedNA));
             if(angleNA*180/Math.PI<30){
@@ -3585,8 +3620,10 @@ public void calibrateOFF(){
     private org.opensourcephysics.display.DrawingPanel drawingPanel2;
     private org.opensourcephysics.display.DrawingPanel drawingPanel3;
     private org.opensourcephysics.display.DrawingPanel drawingPanel4;
+    private org.opensourcephysics.display.DrawingPanel drawingPanel5;
     private org.opensourcephysics.display.DrawingPanel drawingPanel6;
     private org.opensourcephysics.display.DrawingPanel drawingPanel7;
+    private org.opensourcephysics.display.DrawingPanel drawingPanel8;
     private org.opensourcephysics.display.DrawingPanel drawingPanelHistogram;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;

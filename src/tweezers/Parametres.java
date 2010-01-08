@@ -188,14 +188,14 @@ public class Parametres {
         //thmax0 = Math.asin(NA/nimmersion); //NA=n sin(thmax)
         //thmax=op.thetarefrac(nimmersion,n1,thmax0);
         pupil2waist=1./waist2pupil;
-        k=2*Math.PI/lambda;
+        k=2.*Math.PI/lambda;
         kmedi=k*n1;
         m=dens*4./3.*Math.PI*Math.pow(R,3);//MASSA DE LA BOLA
         gamma=6.*Math.PI*visc*R;
         sigma=2*kb*T/gamma;
         D=kb*T/gamma;
-        w0max=2.*lambda/(Math.PI*NAmin);
-        w0min=2.*lambda/(Math.PI*NAmax);
+        w0max=lambda/(Math.PI*NAmin);
+        w0min=lambda/(Math.PI*NAmax);
         //=(int)(timemax/dt);
         //Rmin[0]=lambda; //limit inferior Mie
         //Rmax[1]=lambda;//lambda/20;// limit superior Rayleigh
@@ -218,7 +218,7 @@ public class Parametres {
             //Rpe=NA*f; //******* 2.5; //Di�metre pupil�la d'entrada: t�picament 5mmMath.tan(thmax)
      }else{
         L=w0*w0*Math.PI/lambda; //dist�ncia z a la qual la intensitat decau un #% en mm     
-        estimatedNA=2.*lambda/(Math.PI*w0);
+        estimatedNA=lambda/(Math.PI*w0);
         //w0=lambda/(Math.PI*NA);//0.51*lambda/(Math.PI*NA);//lambda/(Math.PI*NA);//2*lambda/(n1*Math.PI*NA);
      }
         
